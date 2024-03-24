@@ -14,6 +14,8 @@ import cms.view.CMSGui;
 public class CMS {
 	public static void main(String[] args) {
 		Connection connection = DBConnection.getConnection();	
+		DBConnection.printInfo(connection);
+		DBConnection.closeConnection(connection);
 		System.out.println(connection);
 	}
 }

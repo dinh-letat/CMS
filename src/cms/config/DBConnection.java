@@ -12,7 +12,7 @@ public class DBConnection {
 			// register MySQL Driver with DriverManager
 			DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 			
-			String url = "http://localhost:3306/cms";
+			String url = "jdbc:mysql://localhost:3306/cms";
 			String username = "root";
 			String password = "123456";
 			
@@ -25,7 +25,25 @@ public class DBConnection {
 	}
 	
 	public static void closeConnection(Connection connection) {
-		
+		try {
+			if(connection != null) {
+				connection.close();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	public static void printInfo(Connection connection) {
+		if(connection != null) {
+			try {
+				System.out.println(connection.getMetaData().toString());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	
